@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Meter - element</title>
+	<style>
+	body {
+		font-family: "helvetica", "arial", "sans-serif";
+		color: #444;
+	}
+	meter {
+	  width: 500px;
+	  height: 25px;
+	   -webkit-appearance: none; /* Reset appearance */
+	  border: 1px solid #ccc;
+	  border-radius: 3px;
+	  margin: 5em;
+  	position: relative
+	}
+	meter::before {
+	  content: 'Macintosh HD';
+	  position: absolute;
+	  top: -100%;
+	}
+
+	meter::after {
+	  content: '64.54 GB free out of 120.47 GB';
+	  position: absolute;
+	  top: -100%;
+	  right: 0;
+	}
+	meter::-webkit-meter-bar {
+	  background: none; /* Required to get rid of the default background property */
+	  background-color: whiteSmoke;
+	  box-shadow: 0 5px 5px -5px #333 inset;
+	}
+	meter::-webkit-meter-optimum-value {
+	  box-shadow: 0 5px 5px -5px #999 inset;
+	  background-image: linear-gradient(
+	    90deg, 
+	    #8bcf69 5%, 
+	    #e6d450 5%,
+	    #e6d450 15%,
+	    #f28f68 15%,
+	    #f28f68 55%,
+	    #cf82bf 55%,
+	    #cf82bf 95%,
+	    #719fd1 95%,
+	    #719fd1 100%
+	  );
+	  background-size: 100% 100%;
+	}
+
+	meter::-webkit-meter-optimum-value {
+	  -webkit-transition: width .5s;
+	}
+
+	meter::-webkit-meter-optimum-value:hover {
+	  /* Reset each sub-category to 20% */
+	  background-image: linear-gradient(
+	    90deg, 
+	    #8bcf69 20%, 
+	    #e6d450 20%,
+	    #e6d450 40%,
+	    #f28f68 40%,
+	    #f28f68 60%,
+	    #cf82bf 60%,
+	    #cf82bf 80%,
+	    #719fd1 80%,
+	    #719fd1 100%
+	  );
+	  transition: width .5s;
+	  width: 100% !important; /* !important required. to override the inline styles in WebKit. */
+	}
+
+	meter::-webkit-meter-bar {
+	  /* Let's animate this */
+	  animation: animate-stripes 5s linear infinite;
+	  background-image:
+	    linear-gradient(
+	      135deg,
+	      transparent,
+	      transparent 33%,
+	      rgba(0, 0, 0, 0.1) 33%,
+	      rgba(0, 0, 0, 0.1) 66%,
+	      transparent 66%
+	    );
+	  background-size: 50px 25px;
+	}
+
+	@keyframes animate-stripes {
+	  to { background-position: -50px 0; }
+	}
+
+	meter {
+	  /* Reset the default appearence */
+	  -moz-appearance: none;
+	}
+	meter::-moz-meter-bar {
+	  box-shadow: 0 5px 5px -5px #999 inset;
+	  background-image: linear-gradient(
+	    90deg, 
+	    #8bcf69 5%, 
+	    #e6d450 5%,
+	    #e6d450 15%,
+	    #f28f68 15%,
+	    #f28f68 55%,
+	    #cf82bf 55%,
+	    #cf82bf 95%,
+	    #719fd1 95%,
+	    #719fd1 100%
+	  );
+	  background-size: 100% 100%;
+	}
+	</style>
+</head>
+<body>
+	<!--
+	valor de 0 a 100
+	abaixo de 10 = valor ruim;
+	acima de 90 = valor bom;
+	valor ótimo acima de 50;
+	-->
+	<meter min="0" low="10" optimum="50" high="90" max="100" value="85" title="GB"></meter>
+</body>
+</html>

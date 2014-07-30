@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Keyframes - element</title>
+	<style>
+	.product {
+	  background: white;
+	  padding: 20px;
+	  position: relative;
+	  width: 250px;
+	}
+	.product-hover {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  opacity: 0;
+	  
+	  /* criando as barras diagonais */
+	  background-size: 30px 30px;
+	  background-image: linear-gradient(
+	    45deg, 
+	    rgba(0,0,0,0.1)  25%, 
+	    transparent       25%, 
+	    transparent       50%, 
+	    rgba(0,0,0,0.1)  50%, 
+	    rgba(0,0,0,0.1)  75%, 
+	    transparent       75%, 
+	    transparent
+	  );  
+	}
+	.product:hover .product-hover {
+	  opacity: 1;
+	}
+	@keyframes barberpole {
+	  from { background-position: 0 0; }
+	  to   { background-position: 30px 60px; }
+	}
+	/* crhome */
+	@-webkit-keyframes barberpole {
+	  from { background-position: 0 0; }
+	  to   { background-position: 30px 60px; }
+	}
+	.product-hover {
+	  	animation: barberpole 0.5s linear infinite;
+	  	/* crhome */
+		-webkit-animation: barberpole 0.5s linear infinite;
+		transition: opacity 0.3s ease;
+	}
+	</style>
+</head>
+<body>
+	<div class="product">
+	  <div class="product-hover"></div>
+
+	  <!-- all the product information and stuff -->
+	  <img src="http://placehold.it/250x250.png" alt="Imagem de ilustração" title="Imagem de ilustração">
+	</div>
+</body>
+</html>
