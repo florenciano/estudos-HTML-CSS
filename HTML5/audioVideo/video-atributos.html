@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio e Vídeos - atributos</title>
+</head>
+<body>
+<section>
+	<video poster="capa.jpg" controls id="video" width="400">
+		<source src="video.ogv" type="video/ogg">
+		<source src="video.mp4" type="video/mp4">
+		<source src="video.webm" type="video/webm">
+		<!-- Código (X)HTML para inserção de video com Flash -->
+		<p>Seu navegador não suporta o elemento video da HTML5.<br>Faça <a href="video.mp4">download do video</a></p>
+	</video>
+</section>
+<aside>
+	<button type="button">Retirar capa</button>
+	<button type="button">Recolocar capa</button>
+	<button type="button">Largura do vídeo?</button><br>
+	<button type="button">Aumentar dimensões</button>
+	<button type="button">Dimensões default</button><br>
+	<button type="button">Volume?</button> Rode o vídeo altere o volume e click<br>
+	<button type="button">Estado do vídeo?</button> Click com vídeo rodando, em pause e final execução<br>
+	<button type="button">Atributos?</button>
+	<button type="button">Duração?</button><br>
+	<button type="button">Tempo execução?</button> Click com vídeo rodando
+</aside>
+<section>
+
+<script>
+	function init() {
+		var video = document.getElementById('video');
+	var btn = document.getElementsByTagName('button');
+
+	btn[0].onclick = function() {
+		video.poster = '';
+	}
+	btn[1].onclick = function() {
+	video.poster = 'capa.jpg';
+	}
+	btn[2].onclick = function() {
+		console.log('Largura do vídeo: '+video.width+'px');
+	}
+	btn[3].onclick = function() {
+		video.width = video.width*1.2;
+	}
+	btn[4].onclick = function() {
+		video.width = '400';
+	}
+	btn[5].onclick = function() {
+		console.log('Nível de volume do áudio (0-1): '+video.volume);
+	}
+	btn[6].onclick = function() {
+		if (video.paused) {
+			console.log('O vídeo está em Pausa');
+		}else if (video.ended) {
+			console.log('Terminou a execução do vídeo');
+		}else{
+			console.log('O vídeo está rodando');
+		}
+	}
+	btn[7].onclick = function() {
+		var atr = 'Os atributos do elemento vídeo são: \n';
+		if(video.currentSrc) atr += 'src\n';
+		if(video.controls) atr += 'controls\n';
+		if(video.autoplay) atr += 'autoplay\n';
+		if(video.loop) atr += 'loop\n';
+		if(video.poster) atr += 'poster\n';
+		if(video.id) atr += 'id\n';
+		if(video.width) atr += 'width\n';
+		if(video.height) atr += 'height\n';
+		console.log(atr);
+	}
+	btn[8].onclick = function() {
+		console.log('A duração do video é de: '+video.duration+' segundos');
+	}
+	btn[9].onclick = function() {
+		console.log('O tempo de execução no click foi de: '+video.currentTime+' segundos');
+	}
+	}
+	window.onload = init;
+</script>
+
+</body>
+</html>

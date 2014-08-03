@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Geolocalização</title>
+	<style>
+		input[type="button"] {
+			padding: .5em;
+			border: 1px solid #eee;
+			background-color: #f5f5f5;
+			font-size: 100%;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type="button"]:hover {
+			background-color: #f0f0f0;
+		}
+		.dest {
+			background-color: #3a3a3a;
+			color: #dfdfdf;
+			line-height: 1.6em;
+			font-family: "helvetica", "arial", "sans-serif";
+			font-size: 87.5%;
+			padding: 1em;
+		}
+		#mapa {
+			width: 420px;
+			height: 420px;
+			display: none;
+			border: 1px solid #ccc;
+		}
+	</style>
+	<script src="../modernizr-1.6.min.js"></script>
+</head>
+<body>
+	<p>
+		<input type="button" value="Clique para obter a posição" id="botao">
+	</p>
+	<p id="msg" class="dest"></p>
+	<p>
+		<img src="" alt="" id="mapa">
+	</p>
+
+
+	<script>
+	var botao = document.getElementById("botao");
+	botao.addEventListener("click", function obterPosicao() {
+
+		// testando a feature
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(sucesso,erro);
+		} else {
+			console.log( "Este navegador não suporta a funcionalidade Geolocation. :[" )
+		}
+
+		// erro
+		function erro(err) {
+			switch (err) {
+				case 1 : // DENIED
+					var mensagemErro = "A permissão para obter a sua posição foi negada";
+					break;
+				case 2 : // UNAVAILALE
+					var mensagemErro = "Não foi possível estabelecer uma conexão para obter a sua posição";
+					break;
+				case 3 : // TIMEOUT
+					var mensagemErro = "Tempo esgotado";
+					break;
+				default : // SEM DEFINICAO
+					var mensagemErro = "Não foi possível obter sua posição";
+
+					var codigoErro = err.code;
+					var mensagem = "Ocorreu um erro na determinacao da posicao <br/>";
+					mensagem += "Código do erro: " + codigoErro + "<br/>";
+					mensagem += "Mensagem: " + mensagemErro;
+					document.getElementById("msg").innerHTML = mensagem;
+			}
+		}
+
+		// sucesso
+		function sucesso(position) {
+			var mapa = document.getElementById('mapa');
+			var latitude = position.coords.latitude;
+			var longitude = position.coords.longitude;
+			var url = "http://maps.google.com/maps/api/staticmap?center=";
+			url += latitude + "," + longitude;
+			url += "&zoom=15&size=400x400";
+			url += "&markers=color:purple|"+latitude+","+longitude;
+			url += "&sensor=true"
+			mapa.src = url;
+			mapa.style.display = "block";
+		}
+
+	});
+
+	</script>
+</body>
+</html>

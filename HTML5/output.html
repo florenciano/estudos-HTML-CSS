@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Novidades do HTML5</title>
+</head>
+<body>
+	<p>Preço unitário do produto: R$ 320,00</p>
+	<form action="" method="get" name="formulario">
+		<p><label for="quantidade">Quantidade:</label><input type="text" name="qde" id="quantidade"></p>
+		<p>valor total: <output name="vtotal"></output></p>
+	</form>
+
+	<script>
+	function calculaValorTotal() {
+		var qtdeItens = document.forms["formulario"]["qde"].value;
+		var valorTotal = (qtdeItens * 320);
+		document.forms["formulario"]["vtotal"].value = "R$ " + valorTotal + ",00";
+	}
+	window.onload = function() {
+		document.forms["formulario"]["qde"].onblur = calculaValorTotal;
+	}
+	</script>
+</body>
+</html>

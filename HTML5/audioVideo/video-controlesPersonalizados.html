@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio e Vídeos - controles personalizados</title>
+	<style>
+		.btnPlayPause {
+			color: #333;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			padding: 1em 1.5em;
+			height: 45px;
+			max-height: 45px;
+		}
+		.btnPlayPause:hover {
+			color: #333;
+			background-color: #f5f5f5;
+			border-color: #adadad;
+		}
+		/*button[type="button"] {
+			color: #333;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			padding: 1em 1.5em;
+			height: 45px;
+			max-height: 45px;
+		}
+		button[type="button"]:hover {
+			color: #333;
+			background-color: #f5f5f5;
+			border-color: #adadad;
+		}*/
+	</style>
+</head>
+<body>
+<section>
+	<video poster="capa.jpg" controls id="video" width="400">
+		<source src="video.ogv" type="video/ogg">
+		<source src="video.mp4" type="video/mp4">
+		<source src="video.webm" type="video/webm">
+		<!-- Código (X)HTML para inserção de video com Flash -->
+		<p>Seu navegador não suporta o elemento video da HTML5.
+		<br>Faça <a href="video.mp4">download do video</a></p>
+	</video>
+	<input type="range" min="0" max="1" step="0.1" value="1" id="slider">
+	<span id="vol">1</span>
+	<!-- <p><button type="button" id="btn">&#x25b6;</button></p> -->
+</section>
+
+
+<script>
+	function init() {
+		// var video = document.getElementById('video');
+		// var btn = document.getElementById('btn');
+		/*
+		// SOLUCAO 1
+		// iniciar o vídeo com botã "play"
+		/////////////////////////////////////////////////////////////
+
+		// criamos um funcao para iniciar o vídeo
+		var play = function() { video.play() };
+
+		// criando um evento de reprodução do vídeo
+		btn.addEventListener("click", play, false);
+		*/
+
+		/*
+		// SOLUCAO 2
+		// Um só botão "play" e "pause"
+		/////////////////////////////////////////////////////////////
+
+		var playPause = function() {
+			if(video.paused || video.ended) {
+				video.play();
+				this.innerHTML = "&#x2588;";
+			} else {
+				video.pause();
+				this.innerHTML = "&#x25b6;";
+			}
+		}
+		btn.addEventListener("click", playPause, false);
+		// mudando o status do btn quando o vídeo chegar ao fim
+		video.addEventListener("ended", function() {
+			btn.innerHTML = "&#x25b6";
+		}, false);
+		*/
+
+		/*
+		// SOLUCAO 3
+		// mudando status dos botões "play" e "pause" mediante evento do vídeo
+		/////////////////////////////////////////////////////////////
+
+		var playPause = function() {
+			if(video.paused || video.ended) {
+				video.play();
+				this.innerHTML = "&#x2588; &#x2588;";
+			} else {
+				video.pause();
+				this.innerHTML = "&#x25b6;";
+			}
+		}
+		btn.addEventListener("click", playPause, false);
+
+		video.addEventListener("ended", function() {
+			btn.innerHTML = "&#x25b6";
+		}, false);
+		video.addEventListener("play", function() {
+			btn.innerHTML = "&#x2588; &#x2588;";
+		}, false);
+		video.addEventListener("pause", function() {
+			btn.innerHTML = "&#x25b6";
+		}, false);
+		*/
+
+		/*
+		// SOLUCAO 4
+		// retirando os controles default do vídeo e criando o btn "play" e "pause" dinamicamente
+		/////////////////////////////////////////////////////////////
+		*/
+		function id (id) { return document.getElementById(id); }
+		var video 	= 	id("video");
+		var slider 	= 	id("slider");
+		var vol 	= 	id("vol");
+
+		slider.addEventListener("change", function() {
+			video.volume = this.value;
+			vol.innerHTML = (this.value);
+		}, false);
+
+		// criando o botão dinamicamente
+		var btn = document.createElement('button');
+		btn.innerHTML = ("&#x25b6");
+		btn.className = "btnPlayPause";
+		// inserindo o botao e o slider
+		var secao = document.getElementsByTagName('section')[0];
+		secao.insertBefore(btn, slider);
+
+		//removendo os controles
+		video.removeAttribute("controls");
+
+		var playPause = function() {
+			if(video.paused || video.ended) {
+				video.play();
+				this.innerHTML = "&#x2588; &#x2588;";
+			} else {
+				video.pause();
+				this.innerHTML = "&#x25b6;";
+			}
+		}
+		btn.addEventListener("click", playPause, false);
+
+		video.addEventListener("ended", function() {
+			btn.innerHTML = "&#x25b6";
+		}, false);
+		video.addEventListener("play", function() {
+			btn.innerHTML = "&#x2588; &#x2588;";
+		}, false);
+		video.addEventListener("pause", function() {
+			btn.innerHTML = "&#x25b6";
+		}, false);
+
+		// criando uma função para definir múltiplos atributos
+		// function setAttributes(el, attrs) {
+		// 	for(var key in attrs) {
+		//     	el.setAttribute(key, attrs[key]);
+		//  	}
+		// };
+		// setAttributes(slider,{
+		// 	"type"	: 	"range",
+		// 	"min"	: 	"0",
+		// 	"max"	: 	"1",
+		// 	"value"	: 	"1",
+		// 	"step"	: 	"0.1",
+		// 	"id"	: 	"slider"
+		// });
+
+	}
+	window.onload = init;
+</script>
+
+</body>
+</html>
