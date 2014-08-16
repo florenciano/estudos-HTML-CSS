@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Armazenamento de dados - Evento Storage</title>
+	<style>
+	</style>
+</head>
+<body>
+	<form action="#" name="dadoform">
+		<p><label for="dadus">Escolha um valor para armazenar: </label><input type="text" name="dadovalue" id="dadus"></p>
+	</form>
+	<p><a href="#" onClick="salvarDado('meuValor')">Armazenar - setItem()</a></p>
+	<p><a href="#" onClick="apagarDado('meuValor')">Apagar dados - removeItem()</a></p>
+	<p><a href="#" onClick="clearDados()">Apagar todos os dados - clear()</a></p>
+	<p id="mensagem"></p>
+	<button type="button" id="limpar">Limpar</button>
+
+	<script>
+	function msgEvento (e) {
+		if(!e) {
+			e = window.event;
+		}
+
+		var limpar = document.getElementById('limpar');
+		var containerMensagem = document.getElementById('mensagem');
+
+		var mensagem = "Disparado o evento: " + e.type + "<br>";
+			mensagem += "Nome do dado modificado: " + e.key + "<br>";
+			mensagem += "Valor antigo do dado: " + e.oldValue + "<br>";
+			mensagem += "Área de armazenamento: " + e.storageArea + "<br>";
+			mensagem += "URL das moficações: " + e.url;
+		containerMensagem.innerHTML = mensagem;
+
+		limpar.onclick = function() {
+			containerMensagem.innerHTML = "";
+		}
+	}
+
+	function salvarDado (name) {
+		var valor = document.forms['dadoform'].dadovalue.value;
+		if(!valor) {
+			alert( "Entre com um valor para armazenar." );
+		} else {
+			localStorage.setItem( name,valor );
+		}
+	}
+
+	function apagarDado (name) {
+		localStorage.removeItem( name );
+	}
+
+	function clearDados () {
+		localStorage.clear();
+	}
+
+	if(window.addEventListener) {
+		window.addEventListener( "storage",msgEvento,false );
+	} else {
+		window.attachEvent( "onstorage",msgEvento );
+	}
+
+	</script>
+</body>
+</html>

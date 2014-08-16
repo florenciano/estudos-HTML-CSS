@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Armazenamento de dados - sessionStorage</title>
+	<style>
+	</style>
+</head>
+<body>
+	<section>
+		<p>Armazenar com sessionStorage simples (operação de concatenação)</p>
+		<p>4 + 3 = <input type="text" value="Clique"></p>
+		<p>Armazenar com sessionStorage e JSON (operação de adição)</p>
+		<p>4 + 3 = <input type="text" value="clique"></p>
+		<p><button type="button" id="limpar">Limpar</button></p>
+	</section>
+
+	<script>
+
+		// EXEMPLO 1
+		var campos = document.getElementsByTagName('input');
+		var limpar = document.getElementById('limpar');
+
+		window.onload = function() {
+
+			// gravei estes valores no navegador
+			sessionStorage.setItem( "a",4 );
+			sessionStorage.setItem( "b",3 );
+
+			// recuperar os valores no navegador para manipula-los
+			// o exemplo abaixo armazena numa variável global
+			a = sessionStorage.getItem( "a" );
+			b = sessionStorage.getItem( "b" );
+
+			campos[0].onclick = function() {
+				this.value = a + b;
+			}
+		}
+
+		// EXEMPLO 2
+		// criando objeto com números
+		var numeros = {
+			a: 4,
+			b: 3
+		}
+
+		// armazena-los em formato 'number'
+		sessionStorage.setItem("numeros",JSON.stringify(numeros));
+		// recupera-los em formato 'number'
+		JSON.parse(sessionStorage.getItem("numeros"));
+		campos[1].onclick = function() {
+			this.value = numeros.a + numeros.b;
+		}
+
+		limpar.onclick = function() {
+			campos[0].value = "Clique";
+			campos[1].value = "Clique";
+		}
+
+	</script>
+</body>
+</html>

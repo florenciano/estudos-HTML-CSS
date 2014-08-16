@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Armazenamento de dados - localStorage</title>
+	<style>
+	#count {
+		background-color: orange;
+		padding: 0 .25em;
+	}
+	</style>
+</head>
+<body>
+
+	<p>Você visitou esta página: <span id="count"></span></p>
+	<script>
+		if(!localStorage.pageLoadCount) {
+			localStorage.pageLoadCount = 0;
+			localStorage.pageLoadCount +=1;
+			document.getElementById('count').innerHTML = localStorage.pageLoadCount;
+		} else {
+			document.getElementById('count').innerHTML = localStorage.pageLoadCount;
+		}
+	</script>
+</body>
+</html>
