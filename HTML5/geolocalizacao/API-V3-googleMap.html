@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Geolocalização - API V3 Google Maps</title>
+	<style>
+		h1 { margin: 0; }
+		#containerMapa {
+			display: block;
+			width: 640px;
+			height: 480px;
+			border: 1px solid #ccc;
+			box-shadow: 0 5px 5px rgba(0,0,0,.4);
+			border-radius: 2px;
+			display: none;
+		}
+		#msgErro {
+			display: block;
+			min-height: 3em;
+			padding: 1em;
+			margin: 1em 0;
+			width: 640px;
+			border: 1px solid rgb(252, 205, 205);
+			background-color: rgb(252, 239, 239);
+			border-radius: 5px;
+			box-sizing: border-box;
+			font-family: helvetica, arial,sans-serif;
+			color: rgb(250, 106, 106);
+			display: none;
+		}
+	</style>
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</head>
+<body>
+	<h1>Hello World!</h1>
+	<!-- container do mapa: as dimensões são controlados por CSS -->
+	<div id="containerMapa"></div>
+	<!-- place for mensage error -->
+	<div id="msgErro"></div>
+
+	<script>
+		var infowindow = new google.maps.InfoWindow(); // balão de diálogo
+
+		// testando a feature
+		if ( navigator.geolocation ) {
+			navigator.geolocation.getCurrentPosition(sucesso,erro);
+		} else {
+			console.log( "Este navegador não suporta a funcionalidade Geolocation. :[" )
+		}
+
+		// erro
+		function erro( err ) {
+			switch ( err ) {
+				case 1 : // DENIED
+					var mensagemErro = "A permissão para obter a sua posição foi negada";
+					break;
+				case 2 : // UNAVAILALE
+					var mensagemErro = "Não foi possível estabelecer uma conexão para obter a sua posição";
+					break;
+				case 3 : // TIMEOUT
+					var mensagemErro = "Tempo esgotado";
+					break;
+				default : // SEM DEFINICAO
+					var mensagemErro = "Não foi possível obter sua posição";
+
+					var codigoErro = err.code;
+					var mensagem = "Ocorreu um erro na determinacao da posicao <br/>";
+					mensagem += "Código do erro: " + codigoErro + "<br/>";
+					mensagem += "Mensagem: " + mensagemErro;
+					document.getElementById( "msgErro" ).innerHTML = mensagem;
+			}
+		}
+
+		// sucesso
+		function sucesso( position ) {
+			var mapa = document.getElementById( "containerMapa" );
+			mapa.style.display = "block"; // só qdo a api retornar true é que aparece o container na pag
+
+			var opcoes = {
+				zoom: 		17,
+				center: 	new google.maps.LatLng(-23.551086, -46.442490), // coordenadas de casa
+				mapTypeId: 	google.maps.MapTypeId.SATELLITE
+			}
+
+			var map = new google.maps.Map( document.getElementById( "containerMapa" ),opcoes ) //obj pra criar o mapa
+
+			contentString = "Minha casa é aqui!";
+			infowindow.setContent( contentString );
+			infowindow.setPosition(  new google.maps.LatLng(-23.551086, -46.442490) );
+			infowindow.open( map );
+		}
+</script>
+</body>
+</html>
