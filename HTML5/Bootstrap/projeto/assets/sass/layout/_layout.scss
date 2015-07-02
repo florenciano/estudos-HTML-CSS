@@ -10,3 +10,17 @@ footer[role="contentinfo"] {
 aside[role="complementary"] {
 	font-style: italic;
 }
+
+// adjust
+.marketing {
+	padding-top: 40px;
+}
+
+// test componets of sass
+// @import "compass/utilities/sprites";
+@import "icons/*.png";
+@include all-icons-sprites;
+
+.face {
+	@include icons-sprite(facebook);
+}
