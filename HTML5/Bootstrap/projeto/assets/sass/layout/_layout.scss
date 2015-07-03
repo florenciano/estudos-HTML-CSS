@@ -19,8 +19,16 @@ aside[role="complementary"] {
 // test componets of sass
 // @import "compass/utilities/sprites";
 @import "icons/*.png";
-@include all-icons-sprites;
+@include all-icons-sprites; // class create: [name-folder]-[name-file] ex:.icons-facebook
 
+// create class customized
 .face {
-	@include icons-sprite(facebook);
+	@include icons-sprite(facebook); // [name-folder]-sprite([name-file]);
+}
+
+
+// logo nav-bar
+.meuLogo {
+	height: 120px; // equal height img + padding-bottom & padding-top;
+	padding: 15px;
 }
