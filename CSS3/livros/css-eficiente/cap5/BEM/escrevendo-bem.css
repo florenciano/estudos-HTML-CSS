@@ -1,0 +1,88 @@
+/* 
+	ESCREVENDO BEM [BLOCK, ELEMENT & MODIFIER]
+	img base: https://insper.blackboard.com/bbcswebdav/xid-1231503_1;
+*/
+
+
+/* block */
+.head {  }
+
+.menu {  }
+
+.auth {  }
+
+.logo {  }
+
+.search {  }
+
+/*
+element: search
+*/
+.search__input {  }
+
+.search__button {  }
+
+/*
+element: menu
+*/
+.menu__menu-item {  }
+
+
+/*
+modifier: search
+*/
+.search__input--disabled {  }
+
+.search__input--large {  }
+
+.search__input--right {  }
+
+/*
+modifier: menu
+*/
+.menu__menu-item--active {  }
+
+
+/* Outros exemplos */
+.person {  }
+
+.person__hand {  }
+
+.person--female {  }
+
+.person--female__hand {  }
+
+.person__hand--left {  }
+
+.person--masculine {  }
+/*
+Equivale a:
+
+<div class="person">
+	<div class="person__hand">
+	[...]
+	</div>
+</div>
+
+<div class="person--female">
+	<div class="person__hand">
+	[...]
+	</div>
+</div>
+
+<div class="person">
+	<div class="person__hand--left">
+	[...]
+	</div>
+
+	<div class="person__hand">
+	[...]
+	</div>
+</div>
+
+<div class="person--masculine">
+	<span>
+	[...]
+	</span>
+</div>
+*/
