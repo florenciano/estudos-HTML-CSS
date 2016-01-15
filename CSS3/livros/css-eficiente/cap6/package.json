@@ -1,0 +1,23 @@
+{
+  "name": "cap6",
+  "version": "1.0.0",
+  "description": "Testando esta bagaça do Gulp, vamos ver o que vai dar",
+  "main": " gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "estudos-HTML-CSS"
+  },
+  "keywords": [
+    "front-end",
+    "gulp",
+    "task-runner"
+  ],
+  "author": "Rodrigo Florenciano",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
