@@ -22,6 +22,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
+
 // Watch task 
 // Para que as opções de cima funcione precisamos
 // observar nossa pasta
