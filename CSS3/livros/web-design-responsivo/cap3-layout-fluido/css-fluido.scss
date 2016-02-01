@@ -1,0 +1,213 @@
+/******************************************************************
+	Aplicando metodologia BEM e ITCSS
+	
+	BEM: Block | Element | Modifier
+		  B		   E    M
+	Ex:  .nav-main-item_active { ... }
+
+	/////////////////////////////////////////////////////////////////
+
+	ITCSS:
+		1º Settings:   Variáveis | Config. globais;
+		2º Tools: 	   Funções | Mixins;
+		3º Generic:    Resets | Normalize etc;
+		4º Elements:   Estilos elementos HTML característicos do projeto;
+		5º Objects:    Estilizações dos objetos [block] do projeto - não cosméticos;
+		6º Components: [Elements] UI isoladas (menu, carroussel);
+		7º Trumps:	   Helpers | Hacks | Sobrescritas;
+********************************************************************/
+/* [1] Settings */
+@import "compass/css3/box-sizing";
+
+/* [2] Tools */
+* { @include box-sizing(content-box); }
+
+/* [3] Generic */
+html { font-family: Helvetica, arial, sans-serif; }
+
+img,
+iframe,
+object,
+embed,
+video {
+	height: auto;
+	max-width: 100%;
+}
+
+.container {
+	margin: 0;
+	padding: 0;
+	max-width: 1200px; // value fix para evitar aumento
+}
+
+/* [4] Element */
+.container {
+	margin: 0 auto;
+	width: 67.2%; // +/- 960px [container] resolução de 1422px
+}
+
+/* [5] Objects */
+.content {
+	margin: 1.5625% 0; // 15 / 960
+}
+
+/* [6] Components */
+h1 {
+	font-style: 2em; // 32 / 16 [tamanho default browser] = 2 
+}
+
+// container content
+.content-main {
+	float: left;
+	width: 61.7708%; // 593 / 960
+}
+
+// content article
+.article {
+	margin: 4.2158% 0; // 25 / 593 
+}
+
+// últimas notícias
+.last-contents {
+	font-size: .75em; // 12 / 16
+}
+.last-contents-call {
+	float: left;
+	margin: 2.5295% 2.5295% 2.5295% 0; // 15 / 593 (.content-main)
+	width: 47.2175%; // 280 / 593
+	.subtitle {
+		margin-bottom: 0;
+	}
+	.brief {
+		margin: 1.7857% 0;
+	}
+}
+
+// content sidebar
+.content-sidebar {
+	background-color: #F0F0F0;
+	float: right;
+	padding: 1.0416%; // 10 / 960
+	width: 33.5416%; // 322 / 960
+}
+
+// nav menu
+.nav-main {
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		li {
+			background-color: #F9F9F9;
+			float: left;
+			margin: 4.6583%; // 15 / 322 (.content-sidebar)
+			outline: 1px solid #DEDEDE;
+			text-align: center;
+			width: 40.3726%; // 130 / 322
+		}
+	}
+}
+.nav-main-item, .nav-main-item_active {
+	display: block;
+	padding: 7.6923%; // 10 / 130
+	text-decoration: none;
+}
+.nav-main-item_active {
+	background-color: #ccc;
+}
+
+// footer
+.footer {
+	background-color: #F0F0F0;
+	clear: both;
+	font-size: .75em; // 12 / 16
+	margin: 1.5625% 0 0; // 15 / 960
+	padding: 1.5625%; // 15 / 960
+	text-align: center;
+	float: left;
+	width: 100%;
+}
+/*****************************************************************
+	Media Types e Media Queries
+	// examples based and adaptative of Twiiter Bootstrap
+******************************************************************/
+
+/* Telefones em landscape e abaixo */
+@media screen and (max-width: 480px) {
+	body {
+		background-color: yellow;
+	}
+}
+
+/* Telefone em landscape a tablet em portrait */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+	body {
+		background-color: orange;
+	}
+}
+
+/* Tablet em portrait a landscape */
+@media screen and (min-width: 768px) and (max-width: 959px) {
+	body {
+		background-color: red;
+	}
+}
+
+/* Desktop */
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+	body {
+		background-color: purple;
+	}
+}
+
+/* Desktop grande */
+@media screen and (min-width: 1200px) {
+	body {
+		background-color: black;
+	}
+}
+
+// Media Queries
+@media all and (max-width: 640px) {
+	// container full
+	.container {
+		width: 98%;
+	}
+	// remove column
+	.content-main, .content-sidebar {
+		float: none;
+		width: 100%;
+		display: block;
+	}
+
+	// adjust sidebar
+	.content-sidebar {
+		padding: 0;
+	}
+
+	// each article in (.last-contents) per row
+	.last-contents-call {
+		float: none;
+		width: auto;
+	}
+
+	// footer
+	.footer {
+		width: auto;
+		float: none;
+	}
+}
+
+@media all and (max-width: 320px) {
+	.nav-main {
+		ul {
+			li {
+				float: none;
+				width: auto;
+			}
+		}
+	}
+}
+
+
+/* [7] Trumps */	

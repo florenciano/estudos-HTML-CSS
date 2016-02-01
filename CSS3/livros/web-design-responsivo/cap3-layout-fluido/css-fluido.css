@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/******************************************************************
+	Aplicando metodologia BEM e ITCSS
+	
+	BEM: Block | Element | Modifier
+		  B		   E    M
+	Ex:  .nav-main-item_active { ... }
+
+	/////////////////////////////////////////////////////////////////
+
+	ITCSS:
+		1º Settings:   Variáveis | Config. globais;
+		2º Tools: 	   Funções | Mixins;
+		3º Generic:    Resets | Normalize etc;
+		4º Elements:   Estilos elementos HTML característicos do projeto;
+		5º Objects:    Estilizações dos objetos [block] do projeto - não cosméticos;
+		6º Components: [Elements] UI isoladas (menu, carroussel);
+		7º Trumps:	   Helpers | Hacks | Sobrescritas;
+********************************************************************/
+/* [1] Settings */
+/* [2] Tools */
+* { -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; }
+
+/* [3] Generic */
+html { font-family: Helvetica, arial, sans-serif; }
+
+img, iframe, object, embed, video { height: auto; max-width: 100%; }
+
+.container { margin: 0; padding: 0; max-width: 1200px; }
+
+/* [4] Element */
+.container { margin: 0 auto; width: 67.2%; }
+
+/* [5] Objects */
+.content { margin: 1.5625% 0; }
+
+/* [6] Components */
+h1 { font-style: 2em; }
+
+.content-main { float: left; width: 61.7708%; }
+
+.article { margin: 4.2158% 0; }
+
+.last-contents { font-size: .75em; }
+
+.last-contents-call { float: left; margin: 2.5295% 2.5295% 2.5295% 0; width: 47.2175%; }
+.last-contents-call .subtitle { margin-bottom: 0; }
+.last-contents-call .brief { margin: 1.7857% 0; }
+
+.content-sidebar { background-color: #F0F0F0; float: right; padding: 1.0416%; width: 33.5416%; }
+
+.nav-main ul { list-style-type: none; margin: 0; padding: 0; }
+.nav-main ul li { background-color: #F9F9F9; float: left; margin: 4.6583%; outline: 1px solid #DEDEDE; text-align: center; width: 40.3726%; }
+
+.nav-main-item, .nav-main-item_active { display: block; padding: 7.6923%; text-decoration: none; }
+
+.nav-main-item_active { background-color: #ccc; }
+
+.footer { background-color: #F0F0F0; clear: both; font-size: .75em; margin: 1.5625% 0 0; padding: 1.5625%; text-align: center; float: left; width: 100%; }
+
+/*****************************************************************
+	Media Types e Media Queries
+	// examples based and adaptative of Twiiter Bootstrap
+******************************************************************/
+/* Telefones em landscape e abaixo */
+@media screen and (max-width: 480px) { body { background-color: yellow; } }
+/* Telefone em landscape a tablet em portrait */
+@media screen and (min-width: 481px) and (max-width: 767px) { body { background-color: orange; } }
+/* Tablet em portrait a landscape */
+@media screen and (min-width: 768px) and (max-width: 959px) { body { background-color: red; } }
+/* Desktop */
+@media screen and (min-width: 960px) and (max-width: 1199px) { body { background-color: purple; } }
+/* Desktop grande */
+@media screen and (min-width: 1200px) { body { background-color: black; } }
+@media all and (max-width: 640px) { .container { width: 98%; }
+  .content-main, .content-sidebar { float: none; width: 100%; display: block; }
+  .content-sidebar { padding: 0; }
+  .last-contents-call { float: none; width: auto; }
+  .footer { width: auto; float: none; } }
+@media all and (max-width: 320px) { .nav-main ul li { float: none; width: auto; } }
+/* [7] Trumps */
