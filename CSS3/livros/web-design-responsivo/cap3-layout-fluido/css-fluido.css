@@ -69,9 +69,9 @@ h1 { font-style: 2em; }
 /* Tablet em portrait a landscape */
 @media screen and (min-width: 768px) and (max-width: 959px) { body { background-color: red; } }
 /* Desktop */
-@media screen and (min-width: 960px) and (max-width: 1199px) { body { background-color: purple; } }
+@media screen and (min-width: 960px) and (max-width: 1199px) { body { background-color: purple; color: #fff; } }
 /* Desktop grande */
-@media screen and (min-width: 1200px) { body { background-color: black; } }
+@media screen and (min-width: 1200px) { body { background-color: black; color: #fff; } }
 @media all and (max-width: 640px) { .container { width: 98%; }
   .content-main, .content-sidebar { float: none; width: 100%; display: block; }
   .content-sidebar { padding: 0; }
