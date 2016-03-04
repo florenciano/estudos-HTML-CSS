@@ -1,0 +1,63 @@
+/*  Design elements */
+header { 
+	background-color: #EB586F;
+	color: #fff;
+}
+nav { 
+	background-color: #4AA0D5;
+}
+nav ul { list-style-type: none; padding: 0 1em; }
+nav ul li { margin: .5em 0; }
+nav a { color: #454553; }
+article { 
+	background-color: #fff;
+}
+aside { 
+	background-color: #D8E9F0;
+}
+footer { 
+	background-color: #454553;
+	color: #fff;
+}
+
+/* FLEXBOX */
+#main {
+	display: flex;
+
+	/* linhas com quebras */
+	flex-flow: row wrap;
+
+	/* todos conteúdos filhos centralizado [horizontal] */
+	justify-content: center;
+
+	/* todos conteúdos filhos no top [vertical] */
+	align-items: stretch;
+}
+header, footer {
+	flex: 1 100%;
+}
+nav, aside {
+	flex: 1 auto;
+	width: 20%;
+}
+article {
+	flex: 1 auto; /* auto vai pegar a propriedade W or H especificado */ 
+	width: 60%;
+}
+
+@media screen and (max-device-width: 768px) {
+	nav, aside, article {
+		flex: 1 100%;
+	}
+	nav ul {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+		align-content: center;
+	}
+	nav ul li {
+		flex: 1 1em;
+		width: 20%;
+		text-align: center;
+	}
+}

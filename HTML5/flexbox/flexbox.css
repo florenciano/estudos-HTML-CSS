@@ -1,0 +1,69 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	FLEX CONTAINER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.container {
+	width: 100%;
+	max-width: 1080px;
+	height: auto;
+	padding: 10px;
+	background-color: purple;
+
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+	display: flex; /*  or inline-flex */
+
+	-webkit-flex-flow: row wrap;
+
+	/*flex-direction: row;   (default) | row-reverse | column | column-reverse */
+	/*flex-wrap: wrap;  nowrap (default) | wrap | wrap-reverse */
+
+	/* Shorthand 2 lines above = flex-flow: <'flex-direction'> || <'flex-wrap'> */
+	
+	justify-content: flex-end; /* flex-start (default) | flex-end | center | space-between | space-around */
+	/* align-items: flex-start;   flex-start | flex-end | center | stretch (default) | baseline */
+	 /* align-content: flex-start; flex-start | flex-end | center | stretch (default) | space-between | space-around */
+}
+.child {
+	width: 20%;
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid #fff;
+	background-color: orange;
+
+	/* order: 1;  <integer> */
+	/* flex-grow: 1;  <number> (default 0) */
+}
+.child span {
+	font-size: 3em;
+    display: block;
+    font-weight: 700;
+}
+.item2 { 
+	background-color: tomato;
+	height: 300px;
+	color: #fff;
+	order: -1;
+	/*flex-grow: 2;*/
+	/*flex-basis: auto;  <length> | auto (default) */
+
+	/* Shorthand = flex: none || [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
+
+	/*align-self: flex-start;  auto | flex-start (default) | flex-end | center | baseline | stretch */
+}
+@media all and (max-width: 768px) {
+	.container {
+		justify-content: center;
+	}
+}
+
+@media all and (max-width: 480px) {
+	.container {
+		flex-direction: column;
+	}
+	.child {
+		width: 90%;
+		margin: 0 auto 5px;
+	}
+}
