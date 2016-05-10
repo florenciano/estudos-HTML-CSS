@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial SVG</title>
+	<style>
+		svg {
+			width: 20%;
+			display: inline-block;
+			background-color: #d2d2d2;
+			margin: 0 .5em .5em 0;
+		}
+		svg ellipse {
+			fill: orange;
+			fill-opacity: 0.7;
+		}
+	</style>
+</head>
+<body>
+	<!-- SVG has some predefined shape elements -->
+	
+	<!-- 1: rect -->
+	<svg>
+		<rect x="15" y="30" width="50%" height="50%" rx="10" ry="10" style="fill:#A5238A;stroke:#F9B21C;stroke-width:5px;stroke-opacity:0.8">
+	</svg>
+	
+	<!-- 2:  -->
+	<svg>
+		<circle cx="50%" cy="50%" r="40%" style="stroke:#000;fill:blue">
+	</svg>
+
+	<!-- 3: -->
+	<svg class="ellipse">
+		<ellipse cx="30%" cy="50%" rx="20%" ry="40%"/>
+		<ellipse cx="35%" cy="50%" rx="15%" ry="35%" style="fill:green"/>
+		<ellipse cx="40%" cy="50%" rx="10%" ry="30%" style="fill:red"/>
+	</svg>
+	<!-- 4: -->
+	<svg>
+		<line x1="10%" y1="10%" x2="90%" y2="90%" style="stroke:green"/>
+		<line x1="10%" y1="90%" x2="90%" y2="10%" style="stroke:red"/>
+	</svg>
+	<!-- 5: -->
+	<svg>
+		<polygon points="100,10 40,198 190,78 10,78 160,198" style="fill:lime;stroke:blue;fill-rule:evenodd">
+	</svg>
+	<!-- 6: -->
+	<svg>
+		<polyline points="15,20 30,40 60,40 80,50 80,120 100,120 100,80 160,80" style="fill:none;stroke:purple;stroke-width:3px">
+	</svg>
+	<!-- 7: -->
+	<svg>
+		<a xlink:href="#">
+			<text x="20%" y="50%" fill="blue" font-family="sans-serif" font-size="42">RFS</text>
+		</a>
+	</svg>
+	<!-- 8: -->
+	<svg>
+		<g fill="none">
+			<path stroke="red" d="M20 20 l100 0"/>
+			<path stroke="orange" d="M100 40 l60 0"/>
+			<path stroke="gray"
+				stroke-width="8"
+				stroke-linecap="round"
+				stroke-dasharray="12,15"
+				d="M40 120 l120 0"/>
+	</svg>
+	<!-- 9: illustrator -->
+	<svg>
+		<rect fill="#F15A24" width="100" height="100"/>
+		<circle fill="#29ABE2" cx="23.375" cy="26.625" r="17.875"/>
+		<circle fill="#42210B" cx="27.125" cy="75.375" r="16"/>
+		<circle fill="#FBB03B" cx="77.125" cy="80.375" r="16"/>
+		<circle fill="#8CC63F" cx="72.125" cy="31" r="17"/>
+	</svg>
+
+	<img src="insper.svg" alt="Imagem em SVG">
+	<img src="test.svg" alt="Imagem em SVG">
+</body>
+</html>
