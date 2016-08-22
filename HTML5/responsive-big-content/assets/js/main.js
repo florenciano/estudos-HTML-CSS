@@ -1,11 +1,13 @@
 (function(){
-	function swapImage () {
-		if(window.innerWidth < 1200) {
-			document.getElementById("target").setAttribute('src', 'assets/img/imagem-pequena.gif');
+	function replaceImg (el, actualPath, newPath) {
+		if (window.innerWidth > 1199) {
+			document.getElementById(el).setAttribute('src', newPath);
 		} else {
-			document.getElementById("target").setAttribute('src', 'assets/img/imagem-grande-1.gif');
+			document.getElementById(el).setAttribute('src', actualPath);
 		}
 	}
-	swapImage();
-	window.addEventListener("resize", swapImage);
+	replaceImg('target', 'assets/img/imagem-pequena.gif','assets/img/imagem-grande-1.gif');
+	window.addEventListener('resize', function(){
+		replaceImg('target', 'assets/img/imagem-pequena.gif','assets/img/imagem-grande-1.gif');
+	});
 })();
