@@ -1,0 +1,71 @@
+// variables
+$color : magenta;
+$name : page;
+$attr : border;
+
+// mixins
+@mixin hover-color($color) {
+	&:hover {
+		color: $color;
+	}
+}
+
+@mixin test($val1, $val2) {
+	font : {
+		family: Arial, sans-serif;
+		size: $val2;
+	}
+	color: $val1;
+	&:hover {
+		color: fade-out($val1, 0.5);
+		#{$attr}: 1px solid blue;
+	}
+}
+
+// functions
+@for $j from 1 through 7 {
+	.item-list-page:nth-child(#{$j}) {
+		@if $j % 2 == 0 {
+			background-color: adjust-hue(blue, $j * ( 360deg/7 ));
+		} @else {
+			background-color: blue;
+		}
+		
+	}
+}
+
+// oriented object
+
+/* the good way */
+.box-1 {
+	width: 200px;
+	height: 200px;
+	@extend %box-border;
+}
+.box-2 {
+	width: 120px;
+	height: 120px;
+	@extend %box-border;
+}
+// placeholder
+%box-border {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+
+.tab {
+  background: #e5e5e5;
+  border: 1px solid silver;
+  color: #666;
+  display: inline-block;
+  padding: 7px 18px 7px;
+  text-decoration: none;
+  position: relative;
+  top: 1px;
+
+  &.is-selected {
+    background: white;
+    border-bottom-color: white;
+    color: #333;
+  }
+}
