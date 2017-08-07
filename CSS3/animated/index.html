@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animated CSS</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		.test {
+			width: 300px;
+			height: 300px;
+			background-color: violet;
+			margin: 15% auto 0 auto;
+			-webkit-animation-duration: 1s;
+  			/*-webkit-animation-delay: 2s;*/
+  			/*-webkit-animation-iteration-count: infinite;*/
+		}
+	</style>
+</head>
+<body>
+	<a href="#" class="link">lorem</a>
+	<br>
+	<div class="test"></div>
+
+	<script
+  		src="http://code.jquery.com/jquery-3.2.1.min.js"
+  		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  		crossorigin="anonymous">
+	</script>
+	<script>
+
+		$.fn.extend({
+			animateCss: function (animationName) {
+				var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+				this.addClass('animated ' + animationName).one(animationEnd, function () {
+					$(this).removeClass('animated ' + animationName);
+				});
+				return this;
+			}
+		})
+
+		// Use it like this:
+		$(".test").animateCss("shake");
+
+		// var animatedName = "animated shake",
+		// animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+
+		// $(".link").on('click', function() {
+		// 	$('.test').addClass( animatedName ).one( animationEnd, function() {
+		// 		$(this).removeClass( animatedName );
+		// 	});
+		// });
+
+	</script>
+</body>
+</html>
